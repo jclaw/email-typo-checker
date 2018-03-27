@@ -30,12 +30,13 @@ Some words on the way it works! Most email typos are off by one character, and I
 3) missing letter: jakson
 4) switched letters: jakcson
 For the personal section, I start with the first name, and grab chunks (of size name+1) from the personal section string looking for something that is similar to it. For a string like "clawmanjackshon94", I would take the following chunks:
- clawmanj
- lawmanja
- awmanjac
- ...
- jackshon
-
+```
+clawmanj
+lawmanja
+awmanjac
+...
+jackshon
+ ```
 ...at which point I would identify that it matches the first case, which is jackson with an extra letter somewhere. I then repeat the search using the last name.
 
 For the domain section, I just check the first and last snippets that are delimited by periods, aka `@xxxxx.<not checked>.<nor this>.xxx`. For the domain extensions, I’m really only checking if there are numbers in that section or if the user put in .con, since that is a common typo that’s easy to gloss over.
