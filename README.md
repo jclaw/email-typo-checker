@@ -4,12 +4,11 @@ The email typo checker is a tool to identify email typos and suggest corrections
 * Catches typos in both the "domain section" (i.e. after the "@" symbol) and in the "personal section" (before the "@" symbol, based on a user's first and last name). 
 * Works with names containing díäçrìtįčāl mārkś
 
-Adapted from https://jsfiddle.net/davidg707/835bxzas
-Also mentioned here https://hackernoon.com/how-to-reduce-incorrect-email-addresses-df3b70cb15a9
+Adapted from https://jsfiddle.net/davidg707/835bxzas. Here's an article that demo https://hackernoon.com/how-to-reduce-incorrect-email-addresses-df3b70cb15a9
 
 This project is an effort to reduce typos and therefore the amount of typo-related support cases at Bandcamp. This is an alternative to adding a confirmation field to a form. Although there’s not much public data about the success of confirm email fields, some large amount of people copy and paste their emails between fields, and adding an unnecessary field to a form is not ideal. Instead of assuming that the user will screw up their email (which is what a confirm email field implies), the typo checker allows you to only prompt them if you notice something strange. In general, emails will often contain either/both the user's first and/or last names, and domain section typos are easy to check, so there is potential for effective typo checking.
 
-Unfortunately, the typo checker isn't performing so well. After testing on a lot of real users, the it incorrectly flags emails 70% of the time. Most of those are in the personal section (83% ignore rate) vs the domain section (9.7% ignore rate). It was a valuable learning experience pursuing this creative solution rather than just adding a form field, and it might be more successful in different circumstances on different datasets.
+**Unfortunately, the typo checker isn't performing so well**. After testing on a lot of real users, the it incorrectly flags emails 70% of the time. Most of those are in the personal section (83% ignore rate) vs the domain section (9.7% ignore rate). It was a valuable learning experience pursuing this creative solution rather than just adding a form field, and it might be more successful in different circumstances on different datasets.
 
 Room for improvement:
 * Using an English dictionary to identify more typos in the personal section
@@ -29,6 +28,7 @@ Some words on the way it works! Most email typos are off by one character, and I
 2) wrong letter: jacison
 3) missing letter: jakson
 4) switched letters: jakcson
+
 For the personal section, I start with the first name, and grab chunks (of size name+1) from the personal section string looking for something that is similar to it. For a string like "clawmanjackshon94", I would take the following chunks:
 ```
 clawmanj
